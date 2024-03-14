@@ -1,6 +1,6 @@
-# 🌾 Fitteya Dash
+# 🌾 Fitteya Tech
 
-Um produto Fitteya Tech
+Um projeto Fitteya Tech
 
 ## 🚀 Começando
 
