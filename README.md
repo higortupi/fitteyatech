@@ -43,6 +43,9 @@ Daniel Dalbelo: <a href="https://github.com/higortupi/fitteyatech" target="_blan
 Felippe Augusto: <a href="https://github.com/higortupi/fitteyatech" target="_blank"><img align="center" height="30" width="40" alt="logo GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
 </a>
 
+Felipe Rocha: <a href="https://github.com/higortupi/fitteyatech" target="_blank"><img align="center" height="30" width="40" alt="logo GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+</a>
+
 Anilmar Choque: <a href="https://github.com/higortupi/fitteyatech" target="_blank"><img align="center" height="30" width="40" alt="logo GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
 </a>
 
