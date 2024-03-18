@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/Logo_oficial-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Calculadora Financeira</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image" id="resultado">
+            <img src="assets/img/Logo_oficial-removebg-preview.png" alt="">
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Calculadora Financeira</h1>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="empresa">Qual o nome da sua empresa?</label>
+                                <input id="input_empresa" type="text"
+                                    placeholder="Digite o nome da sua empresa"></input>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="peso">Quantos KG de trigo a sua empresa produz ao ano?</label>
+                                <input id="input_peso" type="text" placeholder="Digite o kg de trigo"></input>
+                            </div>
+                            <div class="input-box">
+                                <label for="preco">A qual preço a sua empresa vende o KG do trigo?</label>
+                                <input id="input_preco" type="text" placeholder="Digite o preço do trigo"></input>
+                            </div>
+                            <div class="calcular-botao">
+                                <button onclick="calcularTrigo()"><a href="#">Calcular</a></button>
+                            </div>
+                        </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function calcularTrigo() {
+        var nomeEmpresa = input_empresa.value
+        var pesoTrigo = Number(input_peso.value)
+        var precoTrigo = Number(input_preco.value)
+        var precoFinal = pesoTrigo * precoTrigo
+        var calculoPorcentagem = precoFinal - (precoFinal * 0.24)
+        var porcentagemPeso = pesoTrigo - (pesoTrigo * 0.24)
+
+        resultado.innerHTML = `<a style = "text-align: center;">Olá ${nomeEmpresa}, estima-se que durante o processo de produção do trigo há uma perda de 24% do trigo durante o processo de armazenamento
+        e transporte, portanto dos ${pesoTrigo}KG de trigo que a sua empresa produz no ano, está havendo uma perda de ${porcentagemPeso}KG, e vendendo o trigo a R$ ${precoTrigo}
+        estima-se que por ano a sua empresa esteja perdendo R$ ${calculoPorcentagem} ao ano.<br>
+        <br><b>Mas não se preocupe, nós da Fitteya Tech estamos aqui para ajudar a sua empresa entre em contato conosco na página de contato.
+            <div class="calcular-botao">
+            <button style ="width:100px">Contato</button></b>
+            </div>
+            </a>
+
+         `
+
+    }
+</script>
