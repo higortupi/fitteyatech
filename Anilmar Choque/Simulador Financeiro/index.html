@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador Financeiro</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet" />
+  <link rel="shortcut icon" href="./img/Logo.png" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="navbar_logo">
+        <img src="./img/Logo.png" alt="Logo" />
+        <p> Fitteya <br /> Tech</p>
+      </div>
+
+      <div class="navbar_abas">
+        <ul>
+          <li>HOME</li>
+          <li>SOBRE</li>
+          <li>ORÇAMENTO</li>
+          <li>CONTATOS</li>
+        </ul>
+        <img src="./img/login.png" alt="Login/Cadastro" />
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+    <div id="result" class="container_dados">
+      <div id="voltar" class="container-inputs">
+        <div>
+          <span>Total de Trigo feito (POR ANO):</span> <br>
+          <input type="number" id="input_totalTrigo"> <br> <br>
+        </div>
+        <div>
+          <span>Qual o valor de cada trigo:</span> <br>
+          <input type="number" id="input_valorTrigo"> <br> <br>
+        </div>
+        <div>
+          <span>Porcentagem de perdas no transporte e armazenamento (POR MÊS):</span> <br>
+          <input type="number" id="input_perdas"> <br>
+          <span class="legenda-input">Esse campo pode estar vazio. (Por padrão usamos 24%!!)</span> <br> <br>
+        </div>
+        <div>
+          <span>Quantidade de sensores total:</span> <br>
+          <input type="number" id="input_sensorTotal"> <br> <br>
+        </div>
+        <div class="div_button">
+          <a href="#result" onclick="calcularInvestimento()"><button>Calcular Investimento</button></a>
+        </div>
+      </div>
+    </div>
+
+    <div id="botao"></div>
+  </main>
+</body>
+
+</html>
+
+<script>
+  function voltarText(){
+    result.innerHTML = `<div id="voltar" class="container-inputs">
+        <div>
+          <span>Total de Trigo feito (POR ANO):</span> <br>
+          <input type="number" id="input_totalTrigo"> <br> <br>
+        </div>
+        <div>
+          <span>Qual o valor de cada trigo:</span> <br>
+          <input type="number" id="input_valorTrigo"> <br> <br>
+        </div>
+        <div>
+          <span>Porcentagem de perdas no transporte e armazenamento (POR MÊS):</span> <br>
+          <input type="number" id="input_perdas"> <br>
+          <span class="legenda-input">Esse campo pode estar vazio. (Por padrão usamos 24%!!)</span> <br> <br>
+        </div>
+        <div>
+          <span>Quantidade de sensores total:</span> <br>
+          <input type="number" id="input_sensorTotal"> <br> <br>
+        </div>
+        <div class="div_button">
+          <a href="#result" onclick="calcularInvestimento()"><button>Calcular Investimento</button></a>
+        </div>
+      </div>`
+
+    botao.innerHTML = ``
+  }
+  function calcularInvestimento() {
+    var totalTrigo = Number(input_totalTrigo.value)
+    var perdas = Number(input_perdas.value)
+    var sensorTotal = Number(input_sensorTotal.value)
+    var valorTrigo = Number(input_valorTrigo.value)
+
+    if (input_perdas.value == '') {
+      perdas = 24
+    }
+
+    var trigoMes = totalTrigo / 12
+    var ganhoMensal = valorTrigo * (totalTrigo / 12)
+    var perdaPorc = perdas / 100
+    var perdaMensal = ganhoMensal * perdaPorc
+    var ganhoMenosPerda = ganhoMensal - perdaMensal
+    var investimento = sensorTotal * 200
+    var retorno = Math.round(investimento / perdaMensal)
+    var retornoAno = 0
+
+    if(retorno > 12){
+      retornoAno = Math.round(retorno / 12)
+      retorno = retorno - (retornoAno * 12)
+      if(retorno < 0){
+        retornoAno = retornoAno - 1
+        retorno = - (retorno)
+        retorno = 12 - retorno
+      }
+    }
+
+    if(totalTrigo == 0){
+      alert("Preencha o primeiro campo corretamente!!")
+    }
+    else if(valorTrigo == 0){
+      alert("Preencha o segundo campo corretamente!!")
+    }
+    else if(sensorTotal == 0){
+      alert("Preencha o Quarto campo corretamente!!")
+    }
+    else if(perdas > 100){
+      alert("O valor das perdas não pode ultrapassar 100%")
+    }
+    else{
+      result.innerHTML =
+      `<div class="container-result">
+        <h2>Informações do trigo</h2>
+        <p>
+          Total de Trigo no Ano: ${totalTrigo} <br>
+          Total de Trigo no mês: ${trigoMes.toFixed(2)} <br>
+          Preço do Trigo: R$${valorTrigo.toFixed(2)} <br>
+          Ganho mensal em reais: R$${ganhoMensal.toFixed(2)} <br>
+          Quanto você perde por mês (% | R$): ${perdas}% | R$${perdaMensal.toFixed(2)}<br>
+          Ganho mensal menos as perdas: <b>R$${ganhoMenosPerda.toFixed(2)}</b>
+        </p>
+        <p>Resumindo: você poderia ganhar <b>R$${ganhoMensal.toFixed(2)}</b> POR MÊS, mas está ganhando <b>R$${ganhoMenosPerda.toFixed(2)}</b>, perdendo assim <b>R$${perdaMensal.toFixed(2)}</b></p>
+      </div>
+      <div class="container-result">
+        <h2>Informações de Investimento</h2>
+        <p>
+          Quantidade Total de Sensoses: ${sensorTotal} <br>
+          Preço da Unidade do Sensor: R$200 <br>
+          Preço Total dos Sensores: R$${investimento.toFixed(2)} <br>           
+        </p>
+        <p>Resumindo: A quantidade de sensores que para instalação será <b>${sensorTotal}</b> , sendo que cada sensor custa <b>R$200</b>, assim concluímos que é necessário um investimento inicial de <b>R$${investimento.toFixed(2)}</b></p>
+      </div>
+      <div class="container-result">
+        <h2>Informações de Retorno</h2>
+        <p>
+          Investimento Total: R$${investimento} <br>
+          Perdas Mensais: R$${perdaMensal.toFixed(2)}
+          Quantidade de tempo para recuperar o tempo investido: ${retornoAno} Ano(s) e ${retorno} Mes(es)
+        </p>
+        <p>
+          Resumindo: Com o investimento de <b>R$${investimento.toFixed(2)}</b> a <b>Fitteya Tech</b> planeja que haverá um retorno em <b>${retornoAno} Ano(s) e ${retorno}Mes(es)</b>
+        </p>
+      </div>
+      `
+
+      botao.innerHTML = `<div class="div_button btn_voltar">
+          <a href="#result" onclick="voltarText()"><button>Voltar</button></a>
+        </div>`
+    }
+  }
+
+  
+</script>
