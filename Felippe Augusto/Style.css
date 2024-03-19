@@ -1,0 +1,27 @@
+body{
+    background-image: url(trigo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculadora{
+    width: 500px;
+    height: 500px;
+    background-color: #fcce5f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
