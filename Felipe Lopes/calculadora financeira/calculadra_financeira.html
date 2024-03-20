@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - Fitheya Dash</title>
+    <link rel="stylesheet" href="calculadora_fitheyatech.css">
+</head>
+
+<body>
+    <div clas="div_mae">
+
+        <div class="div_perguntas">
+
+            <input id="nome_empresa" placeholder="Nome da empresa" class="text"> <br> <br>
+
+            <input type="text" id="producao_mensal" placeholder="Qnt. de trigo (T)" class="text"> <br> <br>
+
+
+            <input id="perda_armazenamento" placeholder="Perda no Armazenamento (%)" class="text"> <br> <br>
+
+
+            <input id="perda_transporte" placeholder="Qnt. de perdas no transporte" class="text"> <br> <br>
+
+            <button onclick="fitheyatech()" class="botao">calcular</button> <br>
+
+        </div>
+            <div class="resposta" id="resultado"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function fitheyatech() {
+        var empresa = (nome_empresa.value)
+        var producao = Number(producao_mensal.value)
+        var perdaArmazenamento = Number(perda_armazenamento.value)
+        var perdaTransporte = Number(perda_transporte.value)
+
+        var perda_total = perdaArmazenamento + perdaTransporte
+        var calculoPerdaA = (perdaArmazenamento / 100) * producao
+        var calculoPerdaT = (perdaTransporte / 100) * producao
+        var valor_perda_total = (calculoPerdaA + calculoPerdaT) * 1300
+
+
+        resultado.innerHTML = `vocês da ${empresa}, estão tendo uma perda total de ${perda_total}% <br>
+    que equivale a R$${valor_perda_total} `
+    }
+
+
+</script>

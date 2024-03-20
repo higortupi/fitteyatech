@@ -1,0 +1,42 @@
+body {
+    background-image: url(https://s1.1zoom.me/big0/305/Fields_Sunrises_and_sunsets_Horizon_Ear_botany_Sun_578020_1280x721.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+
+}
+
+.div_mae { 
+    border: solid black;
+    border-radius: 100px;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+
+}
+
+.div_perguntas {
+    border: solid black;
+    border-radius: 15px;
+    width: 240px;
+    height: 200px;
+    text-align: center;
+
+}
+
+.text {
+    border-radius: 8px;
+    border: solid 1px;
+    size: 30%;
+    box-sizing: border-box;
+    width: 215px;
+}
+
+.botao {
+    border-radius: 5px;
+    border: solid 1px black;
+    color: black;
+    background-color: wheat;
+}
