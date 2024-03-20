@@ -6,21 +6,33 @@
 
 <body>
     <div class="background"></div>
-    <div id="calculadora" class="calculadora">
-        <span class="texto">Qual é o seu nome?</span><br>
-        <input id="input_nome"><br>
-        <span class="texto">Quanto trigo você perdeu na úlitma safra?</span><br>
-        <div>
-            <input type="number" id="input_perda">
-            <select id="select_qtdtrigo">
-                <option value="t">Toneladas</option>
-                <option value="kg">Quilogramas</option>
-                <option value="sacas">Sacas</option>
-            </select><p>
+    <div class="index">
+        <div class="header">
+            <img src="./img/Logo.png" class="logo">
+            <div class="navbar">
+                <li class="texto">Início</li>
+                <li class="texto">Sobre nós</li>
+                <li class="texto">Contato</li>
+                <li class="texto">Nossa história</li>
+                <li class="texto">Calculadora Financeira</li>
+            </div>
         </div>
-        <span class="texto">Quantos hectares você planeja plantar na próxima safra?</span><br>
-        <input type="number" id="input_proxima"><br>
-        <button onclick="calc()">Calcular perda</button>
+        <div id="calculadora" class="container">
+            <span class="texto">Qual é o seu nome?</span><br>
+            <input id="input_nome"><br>
+            <span class="texto">Quanto trigo você perdeu na úlitma safra?</span><br>
+            <div>
+                <input type="number" id="input_perda">
+                <select id="select_qtdtrigo">
+                    <option value="t">Toneladas</option>
+                    <option value="kg">Quilogramas</option>
+                    <option value="sacas">Sacas</option>
+                </select><p>
+            </div>
+            <span class="texto">Quantos hectares você planeja plantar na próxima safra?</span><br>
+            <input type="number" id="input_proxima"><br>
+            <button onclick="calc()">Calcular perda</button>
+        </div>
     </div>
 </body>
 
