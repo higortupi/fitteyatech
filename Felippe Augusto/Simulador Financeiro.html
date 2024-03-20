@@ -5,21 +5,22 @@
 </head>
 
 <body>
+    <div class="background"></div>
     <div id="calculadora" class="calculadora">
-        <div id="texto" class="texto">
-            <span>Qual é o seu nome?</span><br>
-            <input id="input_nome"><br>
-            <span>Quanto trigo você perdeu na úlitma safra?</span><br>
+        <span class="texto">Qual é o seu nome?</span><br>
+        <input id="input_nome"><br>
+        <span class="texto">Quanto trigo você perdeu na úlitma safra?</span><br>
+        <div>
             <input type="number" id="input_perda">
-            <select id="select_qtdtrigo" class="select">
+            <select id="select_qtdtrigo">
                 <option value="t">Toneladas</option>
                 <option value="kg">Quilogramas</option>
                 <option value="sacas">Sacas</option>
-            </select><br>
-            <span>Quantos hectares você planeja plantar na próxima safra?</span><br>
-            <input type="number" id="input_proxima"><br>
-            <button onclick="calc()">Calcular perda</button>
+            </select><p>
         </div>
+        <span class="texto">Quantos hectares você planeja plantar na próxima safra?</span><br>
+        <input type="number" id="input_proxima"><br>
+        <button onclick="calc()">Calcular perda</button>
     </div>
 </body>
 
@@ -30,19 +31,29 @@
         var perda = Number(input_perda.value)
         var proximaColheita = (input_proxima.value * 3144) / 1000
         var total = (proximaColheita * 0.23) * 1243.31
+        var tonelada = `tonelada`
 
         if (select_qtdtrigo.value == 'kg') {
             perda = perda / 1000
         }
-
-        if (select_qtdtrigo.value == 'sacas') {
+        else if (select_qtdtrigo.value == 'sacas') {
             perda = (perda * 60) / 1000
+        }
+
+        if (perda > 1.99) {
+            tonelada = `toneladas`
         }
 
         var valorPerda = perda * 1243.31
 
-        x.innerHTML = `Cuidado ${input_nome.value}, você pode perder R$${total.toFixed(2)} se não cuidar da temperatura e umidade do seu trigo.<br>
-Na safra passada você perdeu ${perda} toneladas, resultando num prejuizo de R$${valorPerda.toFixed(2)}, mas não se preocupe, a Fitteya Tech cuidará disso para você.<br>
-Uma solução inovadora utilizando sensores de temperatura e umidade vão garantir a qualidade do seus grãos. Consulte um especialista para mais informações.`
+        calculadora.innerHTML = `<span class="resultado">Cuidado ${input_nome.value}, você pode perder <b class="grifado">R$${total.toFixed(2)}</b> se não cuidar da temperatura e umidade do seu trigo.<br>
+Na safra passada você perdeu ${perda} ${tonelada}, resultando num prejuízo de R$${valorPerda.toFixed(2)}, mas não se preocupe, a Fitteya Tech cuidará disso para você.<br>
+Uma solução inovadora utilizando sensores de temperatura e umidade vão garantir a qualidade do seus grãos. Consulte um especialista para mais informações.</span><br>
+    <div><button onclick="voltar()">Realizar um novo cálculo</button>
+        <button onclick="contato()">Junte-se a nós</button></div>`
+    }
+
+    function voltar() {
+        window.location.reload()
     }
 </script>
