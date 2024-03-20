@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <!DOCTYPE html>
+        <html lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Calculadora financeira style.css">
+        <title>Calculadora Financeira - Início</title>
+    </head>
+    <body>
+        <div class="div_pai">
+            <h1 class="quasetudo">Caculadora Financeira para o seu esquema agricultor de trigo</h1>
+            <p class="quasetudo">
+                Essa calculadora tem como objetivo calcular o quanto você perde em dinheiro por mês, quanto recuperaria com
+                o
+                nosso projeto e quanto tempo demoraria para começar a gerar lucro.
+            </p>
+            <br>
+            <div class="quasetudo">Qual o nome da sua empresa?</div>
+            <input type="Text" placeholder="Empresa" id="Empresa" class="inputs"><br><br>
+
+            <div class="quasetudo">Qual a quantidade de trigo produzido em toneladas por mês?</div>
+            <input type="Number" placeholder="Trigo (T)" id="qtdTrigoToneladas" class="inputs"><br><br>
+
+            <div class="quasetudo">Por quanto vende cada tonelada?</div>
+            <input type="Number" placeholder="Valor (R$)" id="valorTonelada" class="inputs"><br><br>
+
+            <div class="quasetudo">Qual a sua perda mensal atual (%) devido as temperaturas e umidades inadequadas no
+            transporte?</div>
+            <input type="Number" placeholder="%" id="perdaMensalTransporte" class="inputs"><br><br>
+
+            <div class="quasetudo">Qual a sua perda mensal atual (%) devido as temperaturas e umidades inadequadas no
+            armazenamento?</div>
+            <input type="Number" placeholder="%" id="perdaMensalArmazenamento" class="inputs"><br><br>
+
+            <button onclick="Calcular()" class="botao">Calcular perda</button>
+
+            <div class="quasetudo" id="respostas"></div>
+        </div>
+    </body>
+</html>
+
+<script>
+    function Calcular(){
+        var valorT = Number(valorTonelada.value)
+        var qtdTrigo = Number(qtdTrigoToneladas.value)
+        var perdaTransporte = Number(perdaMensalTransporte.value)
+        var perdaArmazenamento = Number(perdaMensalArmazenamento.value)
+
+        var renda = qtdTrigo * valorT
+
+        renda = parseFloat(renda.toFixed(2))
+
+        var perdaDinheiroTransporte = renda * perdaTransporte / 100
+
+        perdaDinheiroTransporte = parseFloat(perdaDinheiroTransporte.toFixed(2))
+
+        var perdaDinheiroArmazenamento = renda * perdaArmazenamento / 100
+
+        perdaDinheiroArmazenamento = parseFloat(perdaDinheiroArmazenamento.toFixed(2))
+
+        var perdaTotal = perdaDinheiroArmazenamento + perdaDinheiroTransporte
+
+        perdaTotal = parseFloat(perdaTotal.toFixed(2))
+
+        var rendaMensalAtual = renda - perdaTotal
+
+        rendaMensalAtual = parseFloat(rendaMensalAtual.toFixed(2))
+
+        var custo = 100000
+
+        var tempoGanho = Math.round(custo / perdaTotal)
+
+        var tempoRecupera = Math.round(custo / renda)
+
+        if (tempoGanho == 'Infinity') {
+            respostas.innerHTML = `Erro no cálculo, verifique se não deixou nenhum valor em branco.`
+        } else {
+            respostas.innerHTML = `
+            ${Empresa.value}, a sua perda em reais por mês devido ao mal cuidado com a temperatura e umidade no transporte é de 
+            R$${perdaDinheiroTransporte} e no armazenamento é de R$${perdaDinheiroArmazenamento} totalizando numa perda de R$${perdaTotal}.
+            <br> ---------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+            Você está ganhando aproximadamente R$${rendaMensalAtual} entretanto, com a implementação do nosso projeto, você poderia estar 
+            ganhando R$${renda}.
+            <br> ---------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+            O orçamento necessário para a implementação do projeto é de R$${custo} você recuperaria o dinheiro gasto em ${tempoRecupera} meses 
+            e começaria a ter ganhos depois de aproximadamente ${tempoGanho} meses.`
+        }
+    }
+</script>
