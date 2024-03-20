@@ -49,16 +49,25 @@
 <script>
     function calcularTrigo() {
         var nomeEmpresa = input_empresa.value
+
         var pesoTrigo = Number(input_peso.value)
+        
         var precoTrigo = Number(input_preco.value)
+
         var precoFinal = pesoTrigo * precoTrigo
+
         var calculoPorcentagem = precoFinal - (precoFinal * 0.24)
+
         var porcentagemPeso = pesoTrigo - (pesoTrigo * 0.24)
 
+        // var pesoFinal = pesoTrigo - porcentagemPeso
+
+        // var precoFim = precoFinal - calculoPorcentagem
+
         resultado.innerHTML = `<a style = "text-align: center;">Olá ${nomeEmpresa}, estima-se que durante o processo de produção do trigo há uma perda de 24% do trigo durante o processo de armazenamento
-        e transporte, portanto dos ${pesoTrigo}KG de trigo que a sua empresa produz no ano, está havendo uma perda de ${porcentagemPeso}KG, e vendendo o trigo a R$ ${precoTrigo}
-        estima-se que por ano a sua empresa esteja perdendo R$ ${calculoPorcentagem} ao ano.<br>
-        <br><b>Mas não se preocupe, nós da Fitteya Tech estamos aqui para ajudar a sua empresa entre em contato conosco na página de contato.
+        e transporte, portanto dos ${pesoTrigo}KG de trigo que a sua empresa produz no ano, está havendo uma perda de ${pesoFinal}KG, e vendendo o trigo a R$ ${precoTrigo}
+        estima-se que por ano a sua empresa esteja perdendo R$ ${precoFim} ao ano.<br>
+        <br><b>Mas não se preocupe, nós da Fitteya Tech estamos aqui para ajudar a sua empresa, entre em contato conosco na página de contato.
             <div class="calcular-botao">
             <button style ="width:100px">Contato</button></b>
             </div>
