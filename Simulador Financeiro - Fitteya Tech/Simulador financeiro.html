@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador Financeiro</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet" />
+  <link rel="shortcut icon" href="./img/Logo.png" type="image/x-icon">
+</head>
+
+<body>
+  <div class="back">
+    <header>
+      <nav class="navbar">
+        <div class="navbar_logo">
+          <img src="./img/Logo.png" alt="Logo" />
+          <p> Fitteya Tech</p>
+        </div>
+
+        <div class="navbar_abas">
+          <ul>
+            <li>Início</li>
+            <li>Sobre Nós</li>
+            <li>Contato</li>
+            <li>Nossa História</li>
+            <li>Calculadora Financeira</li>
+          </ul>
+          <img src="./img/linkedIn.png" alt="LinkedIn" />
+          <img src="./img/instagram.png" alt="Instagram" />
+          <img src="./img/facebook.png" alt="Facebook" />
+        </div>
+
+      </nav>
+    </header>
+
+    <main>
+      <div id="result" class="container_dados">
+        <div id="voltar" class="container-inputs">
+          <div class="input-select">
+            <span class="span-input">Total de trigo colhido no último ano:</span> <br>
+            <input type="number" id="input_totalTrigo">
+            <select id="select_totalTrigo">
+              <option value="t">Toneladas</option>
+              <option value="kg">Quilogramas</option>
+              <option value="sacas">Sacas</option>
+            </select> <br> <br>
+          </div>
+          <div>
+            <span class="span-input">Quantos hectares você planeja plantar na próxima safra?</span> <br>
+            <input type="number" id="input_proximaSafra"> <br> <br>
+          </div>
+          <div>
+            <span class="span-input">Porcentagem de perdas no transporte e armazenamento:</span> <br>
+            <input type="number" id="input_perdas"> <br>
+            <span class="legenda-input">Caso este campo esteja vazio utilizaremos uma média, definida pelo CONAB</span> <br> <br>
+          </div>
+
+          <div class="div_button">
+            <a href="#result" onclick="calcularInvestimento()"><button>Calcular Investimento</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="botao"></div>
+    </main>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  function voltarText() {
+    window.location.reload()
+  }
+
+  function calcularInvestimento() {
+    var totalTrigo = Number(input_totalTrigo.value)
+    var perdas = Number(input_perdas.value)
+    var valorTrigo = 1238.12
+    var mediaColheita = 3.144
+    var tonelada = 'tonelada'
+    var toneladaPerda = 'tonelada'
+    
+
+    if (select_totalTrigo.value == 'kg') {
+      totalTrigo = totalTrigo / 1000
+    }
+    else if (select_totalTrigo.value == 'sacas') {
+      totalTrigo = (totalTrigo * 60) / 1000
+    }
+
+    if (input_perdas.value == '') {
+      perdas = 24
+    }
+
+    var perdaPorcentagem = perdas / 100
+    var totalPerda = totalTrigo * perdaPorcentagem
+    var proximaSafra = input_proximaSafra.value * mediaColheita
+    var prejuizoProximaSafra = (proximaSafra * perdaPorcentagem) * valorTrigo
+    var perdaProximaSafra = proximaSafra * perdaPorcentagem
+    var ganhosAnual = (totalTrigo - totalPerda) * valorTrigo
+    var prejuizo =  totalPerda * valorTrigo
+    var ganhosProximaSafra = proximaSafra * valorTrigo
+    var lucro = ganhosProximaSafra - ganhosAnual
+    var lucroPorcentagem = ((ganhosProximaSafra - ganhosAnual) / ganhosAnual) * 100
+
+    if (totalPerda > 1.99) {
+      toneladaPerda = 'toneladas'
+    }
+
+    if (totalTrigo > 1.99) {
+      tonelada = 'toneladas'
+    }
+
+    if (totalTrigo == 0) {
+      alert("Preencha o primeiro campo corretamente!!")
+    }
+    else if (proximaSafra == 0) {
+      alert("Preencha o segundo campo corretamente!!")
+    }
+    else if (perdas > 100) {
+      alert("O valor das perdas não pode ultrapassar 100%")
+    }
+    else {
+      result.innerHTML =
+        `<div class="container-result">
+        <h2>Informações sobre o trigo</h2>
+        <p>
+          Total de Trigo no Ano: <b>${totalTrigo} ${tonelada}</b> <br>
+          Total de perdas: <b>${totalPerda} ${toneladaPerda}</b> <br>
+          Potencial da próxima safra: <b>${proximaSafra.toFixed(3)} toneladas</b> <br>
+        </p>
+        <p>Para evitar uma <b class="perda">perda de ${perdaProximaSafra} toneladas</b>, junte-se a nós! </p>
+      </div>
+
+      <div class="container-result">
+      <h1>CUIDADO</h1>
+      <p>
+      Você pode <b class="perda">perder R$ ${prejuizoProximaSafra.toFixed(2)}</b> se não cuidar da <b>temperatura e umidade</b> do seu trigo.
+      </p>
+      <p>Mas não se preocupe, <b>a Fitteya Tech cuidará disso para você!</b>
+      </p>
+      </div>
+
+      <div class="container-result">
+      <h2>Informações sobre o dinheiro</h2>
+      <p>
+      Ganho anual: <b>R$ ${ganhosAnual.toFixed(2)}</b> <br>
+      Prejuízo: <b>R$ ${prejuizo.toFixed(2)}</b> <br>
+      Possíveis ganhos da próxima safra: <b class="lucro"> <br>R$ ${ganhosProximaSafra.toFixed(2)}</b> <br>
+      </p>
+      <p>Utilizando nossa tecnologia você pode <b class="lucro">ganhar R$ ${lucro.toFixed(2)}</b> a mais na próxima safra,
+      isso é um <b class="lucro">aumento de ${lucroPorcentagem.toFixed(2)}%</b> em um ano! <p>
+      </div>
+      `
+
+      botao.innerHTML = `<div class="div_button btn_voltar">
+          <a href="#result" onclick="voltarText()"><button>Voltar</button></a>
+        </div>`
+    }
+  }
+
+
+</script>
