@@ -27,7 +27,7 @@ body{
 }
 
 .navbar_logo p{
-    font-size: 20px;
+    font-size: 25px;
     color: #fff;
 }
 
@@ -53,8 +53,8 @@ body{
 }
 
 .navbar_abas li{
-    margin:0 30px;
-    font-size: 15px;
+    margin:0 20px;
+    font-size: 20px;
     color: #fff;
 }
 
@@ -62,7 +62,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    margin: 0;
 }
 
 .container-inputs{
@@ -128,14 +128,14 @@ main{
 
 .container_dados{
     display: flex;
-    margin-top: 50px;
+    margin-top: 0px;
     color: #fff;
 }
 
 
 .container-result{
     background-color: #46381a;
-    margin: 10px;
+    margin: 20px 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -169,12 +169,12 @@ main{
 }
 
 .container-result h1{
-    color: #ff0000;
+    color: #ffff00;
     font-size: 35px;
 }
 
 .perda{
-    color: #ff0000;
+    color: #ffff00;
     font-size: 25px;
 }
 
