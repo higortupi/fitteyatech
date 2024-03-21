@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitteya Tech - Simulador Financeiro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="fundo">
+    
+    
+    <div class="campos">
+        <div class="campo A">
+            <br>
+            <h2>Simulador Financeiro</h2>
+            Nome da empresa: <br>
+            <input id="input_empresa" class="filho A"> <br>
+        </div>
+        <div class="campo B">
+            Quantidade de trigo produzido por mês: <br>
+            <input id="input_trigoMes" class="filho B"> <br>
+        </div>
+        <div class="campo C">
+            Quantidade de trigo perdido por mês:<br>
+            <input id="input_trigoPerda" class="filho C"> <br>
+        </div>
+        <div>
+            <br>
+            <button onclick="simulador()" class="clicar">
+                Faça sua simulação!
+            </button>
+        </div>
+    </div>
+    
+        <div id="divResposta" class="resposta"></div>
+
+        
+    </div>
+</body>
+
+</html>
+
+<script>
+    function simulador() {
+        var nome = input_empresa.value
+        var QuantidadeTrigo = Number(input_trigoMes.value)
+        var QuantidadePerda = Number(input_trigoPerda.value)
+        var ValorPerda = QuantidadePerda * 1150
+        var ValorTrigo = QuantidadeTrigo * 1150
+        var TrigoRestante = ValorTrigo - ValorPerda
+        var ValorAno = TrigoRestante * 12
+        var PerdaAno = ValorPerda * 12
+        var percent = QuantidadePerda / QuantidadeTrigo * 100
+        var Total = ValorAno + PerdaAno
+
+        divResposta.innerHTML = `
+        <br>
+        <br>
+        <br>
+        --------------------------------------------------------- <br>
+        <b> Relatório de Simulação Financeira da ${nome} </b> <br>
+        --------------------------------------------------------- <br>    
+        <br>
+        Quantidade de trigo produzida: <b> ${QuantidadeTrigo} Toneladas </b> <br>
+        Quantidade de trigo perdido: <b> ${QuantidadePerda} Toneladas </b>    <br>
+        Faturamento Mês: <b> R$ ${TrigoRestante} </b>  <br>
+        Faturamento por ano: <b> R$ ${ValorAno} </b> <br>
+        <br>
+        Com um total de <b> ${QuantidadeTrigo} </b> Toneladas de trigo produzidos no mês <br>
+        o retorno que a produtora tem é de <b> R$ ${TrigoRestante} </b> e <b> R$ ${ValorAno} </b> 
+        por Ano! <br>
+        <br>
+        Todo ano, a Empresa ${nome} deixa de lucrar <b> R$ ${PerdaAno} </b> , o que representa <b> ${percent}% </b> 
+        da sua produção total <br>
+        <br>
+        <b> Mas não se preocupe! com a solução proposta pela Fitteya Tech podemos mitigar as suas perdas <br>
+         e aumentando seu lucro total em até R$ ${Total} </b>`
+
+
+
+    } 
+</script>

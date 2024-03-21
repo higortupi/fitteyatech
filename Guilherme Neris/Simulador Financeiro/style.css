@@ -1,0 +1,48 @@
+
+
+.body{
+    background-color: rgb(4, 102, 4);
+}
+
+.campos{
+text-indent: 20px;
+font-weight: bold;
+font-size: 30px;
+color:#f0f8fffb;
+background-color: rgb(7, 95, 34);
+width: 1200px;
+height: 500px;
+border-radius: 100px;
+text-align: center;
+margin: 100px
+}
+
+.filho{
+ font-size: 15px;
+ border-radius: 50px;
+ height: 20%;
+}
+
+.clicar{
+    color:#f0f8fffb;
+  font-size: 25px;
+  background-color: rgb(8, 182, 52);
+  border-radius: 30px;
+}
+
+.resposta{
+align-items: left;
+display: center;
+width: 800px;
+height: 500px;
+border-radius: 100px;
+margin: 70px;
+font-size: large;
+}
+
+.fundo{
+  background-color: rgb(160, 148, 115);
+  height: 700px;
+  display: flex;
+}
+
