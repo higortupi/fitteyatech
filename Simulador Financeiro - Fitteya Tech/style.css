@@ -1,0 +1,183 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans';
+    background-image: url(./img/trigo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+
+.back{
+    background-color: rgba(81, 126, 103, 0.7);
+    width: 100%;
+    height: 100vh;
+}
+
+.navbar_logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar_logo p{
+    font-size: 25px;
+    color: #fff;
+}
+
+.navbar_logo img{
+    width: 60px;
+    margin: 0 60px;
+}
+
+.navbar_abas{
+    display: flex;
+    align-items: center;
+}
+
+.navbar_abas img{
+    width: 20px;
+    height: auto;
+    margin: 0 10px;
+}
+
+.navbar_abas ul{
+    display: flex;
+    list-style: none;
+}
+
+.navbar_abas li{
+    margin:0 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.container-inputs{
+    margin-top: 50px;
+}
+
+.container-inputs span{
+    color: #fff;
+}
+
+.span-input{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.legenda-input{
+    font-size: 15px;
+}
+
+.container-inputs input{
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 600px;
+    height: 30px;
+}
+
+.input-select input{
+    width: 455px;
+}
+
+.input-select select{
+    height: 32px;
+    font-family: 'DM Sans';
+    font-size: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.div_button{
+    width: 600px;
+}
+
+.div_button button{
+    height: 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.div_button button:hover{
+    background-color: #dddddd;
+}
+
+.div_button a{
+    text-decoration: none;
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+.container_dados{
+    display: flex;
+    margin-top: 0px;
+    color: #fff;
+}
+
+
+.container-result{
+    background-color: #46381a;
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+.container-result h2{
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.container-result p{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.btn_voltar{
+    display: flex;
+    justify-content: center;
+}
+
+
+.btn_voltar button{
+    background-color: #fff;
+    color: #000;
+    width: 200px;
+    font-weight: bold;
+}
+
+.container-result h1{
+    color: #ffff00;
+    font-size: 35px;
+}
+
+.perda{
+    color: #ffff00;
+    font-size: 25px;
+}
+
+.lucro {
+    color: #0099ff;
+}

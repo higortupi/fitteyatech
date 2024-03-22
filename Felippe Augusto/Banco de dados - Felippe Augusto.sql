@@ -15,7 +15,8 @@ atualizado datetime,
 status varchar(15),
 dtStatus date,
 constraint chkStatus
-check (status in('entregue', 'enviado', 'pendente')));
+check (status in('entregue', 'enviado', 'pendente'))
+);
 
 
 create table silo (
@@ -25,6 +26,14 @@ toneladas float,
 temperatura float,
 umidade int,
 atualizado datetime
+);
+
+create table usuario (
+idUsuario int primary key auto_increment,
+nome varchar (50),
+nomeEmpresa varchar (50),
+email varchar (30),
+senha varchar(20)
 );
 
 insert into silo (dtColheita, toneladas, temperatura, umidade, atualizado) values
@@ -39,6 +48,16 @@ insert into encomenda values
 select idMercadoria as 'Número da encomenda', prazo as 'Prazo', toneladas as 'Toneladas', motorista as 'Motorista Responsável', placa as 'Placa do caminhão', destino as 'Empresa destino', responsavel as 'Responsável pela encomenda', 
 temperatura as 'Temperatura', umidade as 'Umidade do ar', atualizado as 'Atualizado em:', status as 'status da encomenda', dtStatus as 'Atualizado em:' from encomenda;
 
+insert into usuario values
+(default, 'José Ferreira', 'Fazenda Feliz', 'jose.ferreira@gmail.com', 'Jose1985');
+
+update usuario
+set senha = 'Ferreira1985'
+where idUsuario = 1;
+
+select idUsuario as 'Número de identificação', nome as 'Nome', email as 'Email', senha as 'Senha' from usuario;
+
 drop table encomenda;
 drop table silo;
+drop table usuario;
 drop database fitteyatech;
