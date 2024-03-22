@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitteya Tech</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body class="corpo">
+   
+    <div class="base" id="div_base">
+        <h1 class="texto1">Olá produtor! Responda algumas dessas perguntas:</h1> <br>
+        Quantas toneladas de trigo você produz por ano? <br><input type="number" id="kg"><br>
+        Qual o preço que a tonelada do trigo é vendido na sua região? <br><input type="number" id="valor"><br><br>
+        <button onclick="calcularperda()">OK!</button><br>
+        <img src="https://trello.com/1/cards/65eb3a0822e194f854ba19de/attachments/65eb3a0822e194f854ba19fc/previews/65eb3a0922e194f854ba1a12/download/Design_sem_nome.png" alt="">
+
+
+    </div>
+    
+</body>
+</html>
+<script>
+
+
+     
+
+        function calcularperda() {
+            let qtd = Number(kg.value)
+            let preco = Number(valor.value)
+            let perda =  (qtd * preco) * 0.24
+
+
+
+                div_base.innerHTML = `<h1 class="titulo">Se você produz ${qtd} toneladas de trigo por ano, você pode estar perdendo até R$${perda}!!!</h1><br><h4 style="text-align: center; font-weight: 20px ;">Durante o processo de produção do trigo, existem também as perdas, e em média 24% do que é produzido é perdido durante o armazenamento e transporte, devido as condições dos locais que este grão é armazenado.<br> O trigo é extremamente sensível a humidade e temperatura, sendo necessário manter o grão entre 15° a 18° graus celsius e a humidade ideal de 13%! Sendo asssim, a Fitteya Tech trouxe uma solução para que você, produtor de trigo, monitore a humidade e temperatura do seu trigo da melhor forma possível, para que assim seja possível evitar essa perda de 24% que pode estar te custando até R$${perda}!!`
+
+        }
+    
+       
+
+
+</script>

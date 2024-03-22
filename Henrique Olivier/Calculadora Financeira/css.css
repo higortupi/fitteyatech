@@ -1,0 +1,19 @@
+.corpo {
+    background-color: rgb(183, 248, 215);
+}
+.base {
+    background-color: white;
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: monospace;
+
+} 
+.texto1 {
+    text-align: center;
+    
+}
+.titulo {
+    text-align: center;
+}
