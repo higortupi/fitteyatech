@@ -107,7 +107,15 @@
     var ganhosAnual = (totalTrigo - totalPerda) * valorTrigo
     var prejuizo =  totalPerda * valorTrigo
     var ganhosProximaSafra = proximaSafra * valorTrigo
-    var lucro = ganhosProximaSafra - ganhosAnual
+
+    if(ganhosProximaSafra >= ganhosAnual){
+      var lucro = ganhosProximaSafra - ganhosAnual
+    }
+    else{
+      var lucro = ganhosAnual - ganhosProximaSafra
+    }
+
+    
     var lucroPorcentagem = ((ganhosProximaSafra - ganhosAnual) / ganhosAnual) * 100
 
     if (totalPerda > 1.99) {
@@ -128,6 +136,11 @@
       alert("O valor das perdas não pode ultrapassar 100%")
     }
     else {
+    prejuizoProximaSafraFormatado = prejuizoProximaSafra.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+    ganhosAnualFormatado = ganhosAnual.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+    prejuizoFormatado = prejuizo.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+    ganhosProximaSafraFormatado = ganhosProximaSafra.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+    lucroFormatado = lucro.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
       result.innerHTML =
         `<div class="container-result">
         <h2>Informações sobre o trigo</h2>
@@ -142,7 +155,7 @@
         <div class="container-result">
         <h1>CUIDADO</h1>
         <p>
-        Você pode <b class="perda">perder R$ ${prejuizoProximaSafra.toFixed(2)}</b> se não cuidar da <b>temperatura e umidade</b> do seu trigo.
+        Você pode <b class="perda">perder ${prejuizoProximaSafraFormatado}</b> se não cuidar da <b>temperatura e umidade</b> do seu trigo.
         </p>
         <p>Mas não se preocupe, <b>a Fitteya Tech cuidará disso para você!</b>
         </p>
@@ -151,11 +164,11 @@
         <div class="container-result">
         <h2>Informações sobre o dinheiro</h2>
         <p>
-        Ganho anual: <b>R$ ${ganhosAnual.toFixed(2)}</b> <br>
-        Prejuízo: <b>R$ ${prejuizo.toFixed(2)}</b> <br>
-        Possíveis ganhos da próxima safra: <b class="lucro"> <br>R$ ${ganhosProximaSafra.toFixed(2)}</b> <br>
+        Ganho anual: <b>${ganhosAnualFormatado}</b> <br>
+        Prejuízo: <b>${prejuizoFormatado}</b> <br>
+        Possíveis ganhos da próxima safra: <b class="lucro"> <br>${ganhosProximaSafraFormatado}</b> <br>
         </p>
-        <p>Utilizando nossa tecnologia você pode <b class="lucro">ganhar R$ ${lucro.toFixed(2)}</b> a mais na próxima safra,
+        <p>Utilizando nossa tecnologia você pode <b class="lucro">ganhar ${lucroFormatado}</b> a mais na próxima safra,
         isso é um <b class="lucro">aumento de ${lucroPorcentagem.toFixed(2)}%</b> em um ano! <p>
         </div>
       `
